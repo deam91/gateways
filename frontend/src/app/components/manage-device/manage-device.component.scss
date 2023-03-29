@@ -1,0 +1,56 @@
+
+.cdk-overlay-pane.gateway-devices-dialog {
+  position: relative !important;
+}
+
+.close.mat-icon-button {
+  position: absolute;
+  top: .1em;
+  right: .1em;
+  padding: 5px;
+  line-height: 14px;
+  min-width: auto;
+}
+
+.slide-margin {
+  margin-top: .7em;
+  &.delete-button {
+    margin-top: 0;
+    margin-left: 1em;
+  }
+}
+
+.mat-slide-toggle-label .mat-slide-toggle-bar {
+  width: 28px;
+  height: 10px;
+  .mat-slide-toggle-thumb-container {
+    width: 14px;
+    height: 14px;
+    top: -3px;
+    .mat-slide-toggle-thumb {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}
+
+
+.mat-dialog-title {
+  margin-top: 1em;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #7fc679;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #7fc679;
+}
+
+.mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0 !important; width: unset;}
+.mat-form-field-label-wrapper { top: -1.3em; }
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.1em) scale(.75);
+  width: 133.33333%;
+}

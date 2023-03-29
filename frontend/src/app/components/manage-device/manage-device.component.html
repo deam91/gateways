@@ -1,0 +1,53 @@
+<button class="close" mat-icon-button (click)="closeDialog()" tabindex="-1">
+  <mat-icon class="mat-18">close</mat-icon>
+</button>
+
+<div fxLayout="row" fxLayoutAlign="space-between" mat-dialog-title>
+  <h2>Devices</h2>
+  <button type="button" mat-icon-button (click)="addDevice()" tabindex="-1">
+    <mat-icon class="mat-18">add</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  <ng-template [ngIf]="devices.controls.length == 0">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <h3>No devices yet</h3>
+    </div>
+  </ng-template>
+  <form class="gateway-form" [formGroup]="devicesForm">
+    <div formArrayName="devices" fxLayout="column">
+      <div *ngFor="let device of devices.controls; let i=index" [formGroupName]="i" fxLayout="row" fxLayoutAlign="space-between">
+        <mat-form-field class="device-field" appearance="outline">
+          <mat-label>UID</mat-label>
+          <input matInput placeholder="UID..." [formControlName]="'uid'">
+        </mat-form-field>
+        <mat-form-field class="device-field" appearance="outline">
+          <mat-label>Vendor</mat-label>
+          <input matInput placeholder="Vendor..." [formControlName]="'vendor'">
+        </mat-form-field>
+        <mat-slide-toggle (change)="onSlideChange($event, i)" #statusSlide class="device-field slide-margin" [checked]="devices.at(i).get('status')?.value == 'online'">
+          {{statusSlide.checked ? 'Online' : 'Offline'}}
+        </mat-slide-toggle>
+
+        <button type="button" mat-icon-button (click)="removeDevice(i)" class="slide-margin delete-button">
+          <mat-icon class="mat-18">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="column" fxLayoutAlign="stretch">
+  <ng-template [ngIf]="!loading">
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button mat-button (click)="closeDialog()">Cancel</button>
+      <button mat-button (click)="!loading && save()">Save</button>
+    </div>
+  </ng-template>
+  <ng-template [ngIf]="loading">
+    <div fxLayout="row" fxLayoutAlign="center">
+      <mat-progress-spinner mode="indeterminate" diameter="25"></mat-progress-spinner>
+    </div>
+  </ng-template>
+</mat-dialog-actions>
