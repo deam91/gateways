@@ -1,18 +1,40 @@
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+let cors = require("cors");
+let bodyParser = require("body-parser");
+require("dotenv").config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const mongoose = require('mongoose');
 
-var app = express();
+const indexRouter = require('./routes/index');
+const gatewaysRouter = require('./routes/gateways');
+
+const environment = require('./config/environment');
+
+const app = express();
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
+// Connect to Mongoose and set connection variable
+// MongoDB connection
+console.log("connection string", environment.mongodb.uri);
+console.log("secret", environment.secret);
+mongoose.connect(environment.mongodb.uri, {dbName: 'gateways'}).then(
+    () => console.log("Connected to database"),
+    err => console.log("Database error: ", err)
+);
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/gateways', gatewaysRouter);
+
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+})
 
 module.exports = app;
