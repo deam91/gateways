@@ -1,12 +1,12 @@
 version: '3'
 services:
   angular:
-    build: ./frontend
+    build:
+      context: ./frontend
     ports:
       - "4200:4200"
   backend:
     build:
-      target: "dev"
       context: ./backend
     volumes:
       - .:/src
@@ -21,9 +21,7 @@ services:
   mongodb:
     image: mongodb/mongodb-community-server:6.0-ubi8
     ports:
-      - "27017:27017"
+      - "127.0.0.1:27018:27017"
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=user
-      - MONGO_INITDB_ROOT_PASSWORD=pass
-    volumes:
-      - "./data:/data/db"
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
