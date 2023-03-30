@@ -22,7 +22,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      working-directory: ./backend
     - name: Install packages
       run: npm ci
       working-directory: ./backend
