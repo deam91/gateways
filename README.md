@@ -15,4 +15,10 @@ Run `docker-compose build` to build the docker images.
 
 Run `docker-compose up -d` to run the containers.
 
-After build, the Angular application will be available at http://localhost:4200 and Node.js backend at http://localhost:3000 
+After run the containers: 
+
+ - The Angular application will be available at http://localhost:4200 
+   
+ - The Node.js backend will be available at http://localhost:3000 
+
+ - Swagger definition at http://localhost:3000/docs
