@@ -11,6 +11,8 @@ Built with `Angular v14.3` `Node.js v16.13` `MongoDB Community Server v6.0`
 
 ## Build
 
+> Optional: Extract `data.tar.gz` file in the root directory. This contains an example MongoDB data.
+
 Run `docker-compose build` to build the docker images.
 
 Run `docker-compose up -d` to run the containers.
