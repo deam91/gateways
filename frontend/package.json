@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:coverage": "ng test --code-coverage",
+    "ci:clean": "rimraf ./dist",
+    "ci:test": "ng test --watch=false --browsers=ChromeHeadlessCustom --code-coverage",
+    "ci:build": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +27,8 @@
     "@angular/router": "^14.3.0",
     "@angular/service-worker": "^14.3.0",
     "@types/node": "^18.15.10",
+    "ci": "^2.2.0",
+    "puppeteer": "^19.8.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
