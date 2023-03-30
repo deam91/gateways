@@ -1,7 +1,7 @@
 
 const environment = {
     mongodb: {
-        uri: 'mongodb://user:pass@127.0.0.1:27018',
+        uri: 'mongodb://user:pass@mongodb:27017',
     },
     secret: '',
 }

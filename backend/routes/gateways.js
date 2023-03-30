@@ -77,8 +77,8 @@ router.get('/', async function (req, res, next) {
 router.post('/', async function (req, res, next) {
     const name = req.body.name;
     const ip = req.body.ip_address;
+    const serial = req.body.serial;
 
-    const serial = uuid.v4();
     const gateway = new Gateway({
         serial: serial,
         name: name,
