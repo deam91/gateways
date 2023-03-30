@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const gatewaysRouter = require('./routes/gateways');
 
 const environment = require('./config/environment');
+const swaggerDocs = require("./swagger");
 
 const app = express();
 
@@ -29,12 +30,14 @@ mongoose.connect(environment.mongodb.uri, {dbName: 'gateways'}).then(
     err => console.log("Database error: ", err)
 );
 
-app.use('/', indexRouter);
 app.use('/gateways', gatewaysRouter);
+app.use('/', indexRouter);
+
+swaggerDocs(app);
 
 app.use((err, req, res, next) => {
     console.error(err.stack)
     res.status(500).send('Something broke!')
-})
+});
 
 module.exports = app;
