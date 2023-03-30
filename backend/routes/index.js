@@ -1,9 +1,34 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
+/**
+ * @openapi
+ * /healthcheck:
+ *  get:
+ *     tags:
+ *      - Healthcheck
+ *     description: Returns API operational status
+ *     responses:
+ *       200:
+ *         description: API is  running
+ */
+router.get('/healthcheck', (req, res) => res.sendStatus(200))
+
+/**
+ * @openapi
+ * /:
+ *  get:
+ *     tags:
+ *      - Index
+ *     description: Returns the API name
+ *     responses:
+ *       200:
+ *         description: API is running
+ */
 router.get('/', function(req, res, next) {
-  res.json({ title: 'Gateways Graph' });
+  res.json({ title: 'Gateways API' });
 });
+
+
 
 module.exports = router;
