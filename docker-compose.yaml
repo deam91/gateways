@@ -26,3 +26,5 @@ services:
       # change mongodb user and password as you wish
       - MONGODB_INITDB_ROOT_USERNAME=user
       - MONGODB_INITDB_ROOT_PASSWORD=pass
+    volumes:
+    - './data:/data/db'
