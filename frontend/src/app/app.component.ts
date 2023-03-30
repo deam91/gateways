@@ -91,7 +91,6 @@ export class AppComponent {
     dialogConfig.minWidth = '400px';
 
     dialogConfig.minHeight = '50%';
-    dialogConfig.disableClose = true;
     dialogConfig.data = {devices: gateway.devices, gateway: gateway};
     const dialog = this.matDialog.open(ManageDeviceComponent, dialogConfig);
     dialog.afterClosed().subscribe((data) => {

@@ -158,7 +158,6 @@ describe('AppComponent', () => {
     dialogConfig.maxWidth = '80%';
     dialogConfig.minWidth = '400px';
     dialogConfig.minHeight = '50%';
-    dialogConfig.disableClose = true;
     dialogConfig.data = {devices: gateway.devices, gateway: gateway};
     app.openGatewayDevices(gateway);
 
