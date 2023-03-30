@@ -10,7 +10,7 @@ services:
       context: ./backend
     volumes:
       - .:/src
-    command: npm run start:dev
+    command: npm run start:dev # development server
     ports:
       - "3000:3000"
     environment:
@@ -23,5 +23,6 @@ services:
     ports:
       - "127.0.0.1:27018:27017"
     environment:
+      # change mongodb user and password as you wish
       - MONGODB_INITDB_ROOT_USERNAME=user
       - MONGODB_INITDB_ROOT_PASSWORD=pass
